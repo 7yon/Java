@@ -5,11 +5,11 @@ public class lab_1_2 {
 
     public static void main(String[] args) {
 
-        long a, b, calc = 0;
+        int a, b, calc = 0;
         String str;
 
-        a = Long.parseLong(args[0]);
-        b = Long.parseLong(args[2]);
+        a = Integer.parseInt(args[0]);
+        b = Integer.parseInt(args[2]);
 
         char sign = args[1].charAt(0);
 
