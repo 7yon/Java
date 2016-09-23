@@ -29,7 +29,7 @@ public class BrokenLine {
         ArrayList<Point> foundPoints = new ArrayList<Point>();
 
         for(int i = 0; i < points.size();  i++){
-            if ((points.get(i).get_x() == _x)&&(points.get(i).get_y() == _y))
+            if (points.get(i).comparison(_x, _y))
                 foundPoints.add(points.get(i));
         }
         return foundPoints;
