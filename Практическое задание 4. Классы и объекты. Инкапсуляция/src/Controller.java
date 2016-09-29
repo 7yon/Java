@@ -8,7 +8,6 @@ public class Controller {
 
     private int pointsCount;
     private BrokenLine brokenLine = new BrokenLine();
-
     Scanner in = new Scanner(System.in);
 
     public void setPointsCount() {

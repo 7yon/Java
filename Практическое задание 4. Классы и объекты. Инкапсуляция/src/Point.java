@@ -28,9 +28,7 @@ public class Point {
     }
 
     public double distanceCalculation(){
-        double distance;
-
-        distance = Math.sqrt(Math.pow(0 - this._x, 2) + Math.pow(0 - this._y, 2));
+        double distance = Math.sqrt(Math.pow(0 - this._x, 2) + Math.pow(0 - this._y, 2));
         return  distance;
     }
     public double distanceCalculation(float _x, float _y){
