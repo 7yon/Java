@@ -48,33 +48,40 @@ public class Queue {
         lastNumberTask++;
     }
     private Task getTaskWithHighestPriority(){
-        return taskQueue[0];
+        if (sizeQueue != 0)
+            return taskQueue[0];
+        else throw  new NullPointerException("Очередь пуста!");
     }
     private Task extractTaskWithHighestPriority(){
-        Task taskWithHighestPriority = taskQueue[0];
+        if(sizeQueue != 0) {
+            Task taskWithHighestPriority = taskQueue[0];
 
-        for(int i = 0; i < sizeQueue - 1; i++){
-            taskQueue[i] = taskQueue[i+1];
+            for (int i = 0; i < sizeQueue - 1; i++) {
+                taskQueue[i] = taskQueue[i + 1];
+            }
+            sizeQueue--;
+            return taskWithHighestPriority;
         }
-        sizeQueue--;
-        return taskWithHighestPriority;
+        else throw  new NullPointerException("Очередь пуста!");
     }
     private Task extractTaskWithHighestPriorityAndWithCertainComplexity(int complexity){
-        Task currentTask = null;
-        for (int i = 0; i < sizeQueue; i++){
-            if (taskQueue[i].getComplexityInPoints()<= complexity) {
-                currentTask = taskQueue[i];
-                for(int j = i; j < sizeQueue - 1; j++){
-                    taskQueue[j] = taskQueue[j+1];
-                }
-                break;
+        if(sizeQueue != 0) {
+            Task currentTask = null;
+            for (int i = 0; i < sizeQueue; i++) {
+                if (taskQueue[i].getComplexityInPoints() <= complexity) {
+                    currentTask = taskQueue[i];
+                    for (int j = i; j < sizeQueue - 1; j++) {
+                        taskQueue[j] = taskQueue[j + 1];
+                    }
+                    break;
+                } else
+                    throw new NullPointerException("Задачи, трудоемкость которой не " +
+                            "превышает заданное значение, не существует!");
             }
-            else
-                throw new NullPointerException("Задачи, трудоемкость которой не " +
-                        "превышает заданное значение, не существует!");
+            sizeQueue--;
+            return currentTask;
         }
-        sizeQueue--;
-        return currentTask;
+        else throw  new NullPointerException("Очередь пуста!");
     }
     private void deleteTask(int id){
         for(int i = 0; i < sizeQueue; i++){
@@ -128,10 +135,9 @@ public class Queue {
         return complexity;
     }
     private void clearQueue(){
-        for(int i = 0; i < sizeQueue; i++){
-            taskQueue[i] = null;
-        }
+        taskQueue = new Task[defaultSize];
         sizeQueue = 0;
+        lastNumberTask = 0;
     }
     private Task[] getQueue(){
         Task[] allTasks = new Task[sizeQueue];
@@ -159,16 +165,16 @@ public class Queue {
             System.out.println("12 - выйти из программы");
 
             int actionNumber = in.nextInt();
-            if(actionNumber == 11) break;
+            if(actionNumber == 12) break;
             else{
                 switch (actionNumber) {
                     case 1:
                         System.out.printf("Введите приоритет: ");
                         int priority = in.nextInt();
-                        System.out.printf("Введите сложность");
+                        System.out.printf("Введите сложность: ");
                         int complexityInPoints = in.nextInt();
-                        System.out.printf("Введите описание");
-                        String description = in.nextLine();
+                        System.out.printf("Введите описание: ");
+                        String description = in.next();
 
                         Task newTask = new Task(priority, complexityInPoints, description);
                         queue.insertTask(newTask);
@@ -237,6 +243,11 @@ public class Queue {
         queue.insertTask(task4);
         queue.insertTask(task5);
 
-        queue.outInput(queue);
+        try{
+            queue.outInput(queue);
+        }
+        catch (NullPointerException pointer){
+            System.out.println(pointer.getMessage());
+        }
     }
 }
