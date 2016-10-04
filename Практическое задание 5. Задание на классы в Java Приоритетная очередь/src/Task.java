@@ -9,9 +9,12 @@ public class Task {
     private String description;
 
     public Task(int priority, int complexityInPoints, String description){
-        this.priority = priority;
-        this.complexityInPoints = complexityInPoints;
-        this.description = description;
+        if((priority>=0)&&(priority<=10)) {
+            this.priority = priority;
+            this.complexityInPoints = complexityInPoints;
+            this.description = description;
+        }
+        else throw new NullPointerException("Значение приоритета должно быть от 0 до 10 включительно!");
     }
 
     public int getId() {
