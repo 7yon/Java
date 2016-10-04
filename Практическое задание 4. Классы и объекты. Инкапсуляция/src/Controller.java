@@ -23,8 +23,8 @@ public class Controller {
             Point point = new Point();
 
             System.out.printf("\nВведите через пробел координату X и координату Y: ");
-            point.set_x(in.nextFloat());
-            point.set_y(in.nextFloat());
+            point.setX(in.nextFloat());
+            point.setY(in.nextFloat());
 
             brokenLine.addPoint(point);
         }
@@ -32,7 +32,7 @@ public class Controller {
     public void outInformationAboutString(){
         String information = "";
 
-        information = brokenLine.getCoordinates();
+        information = brokenLine.toString();
         System.out.printf(information);
     }
     public void outLineLength(){
@@ -50,7 +50,7 @@ public class Controller {
         String coordinates, tops = "";
 
         for (int i = 0; i < matchingTops.size(); i++) {
-            coordinates = '(' + Float.toString(matchingTops.get(i).get_x()) + ';' + Float.toString(matchingTops.get(i).get_y()) + ") ";
+            coordinates = '(' + Float.toString(matchingTops.get(i).getX()) + ';' + Float.toString(matchingTops.get(i).getY()) + ") ";
             tops += coordinates;
         }
         System.out.printf(tops);

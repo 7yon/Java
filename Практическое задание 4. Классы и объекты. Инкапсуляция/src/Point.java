@@ -2,54 +2,53 @@
  * Created by Дарья on 20.09.2016.
  */
 public class Point {
-    private float _x;
-    private float _y;
+    private float x;
+    private float y;
 
     public Point(){
-        this._x = 0;
-        this._y = 0;
+        this.x = 0;
+        this.y = 0;
     }
-    public  Point(float _x, float _y){
-        this._x = _x;
-        this._y = _y;
+    public  Point(float x, float y){
+        this.x = x;
+        this.y = y;
     }
 
-    public float get_x() {
-        return _x;
+    public float getX() {
+        return x;
     }
-    public void set_x(float _x) {
-        this._x = _x;
+    public void setX(float x) {
+        this.x = x;
     }
-    public float get_y() {
-        return _y;
+    public float getY() {
+        return y;
     }
-    public void set_y(float _y) {
-        this._y = _y;
+    public void setY(float y) {
+        this.y = y;
     }
 
     public double distanceCalculation(){
-        double distance = Math.sqrt(Math.pow(0 - this._x, 2) + Math.pow(0 - this._y, 2));
+        double distance = Math.sqrt(Math.pow(0 - this.x, 2) + Math.pow(0 - this.y, 2));
         return  distance;
     }
-    public double distanceCalculation(float _x, float _y){
+    public double distanceCalculation(float x, float y){
         double distance;
 
-        distance = Math.sqrt(Math.pow(_y - this._x, 2) + Math.pow(_x - this._x, 2));
+        distance = Math.sqrt(Math.pow(y - this.x, 2) + Math.pow(x - this.x, 2));
         return  distance;
     }
-    public void displacementPoint(float _x, float _y){
-        this._x = _x;
-        this._y = _y;
+    public void displacementPoint(float x, float y){
+        this.x = x;
+        this.y = y;
     }
-    public String outCoordinates(){
-        String coordinates;
 
-        coordinates = '(' + Float.toString(this._x) + ';' + Float.toString(this._y) + ')';
-        return coordinates;
+    @Override
+    public String toString() {
+        return '(' + Float.toString(this.x) + ';' + Float.toString(this.y) + ')';
     }
-    public boolean comparison(float _x, float _y){
-        if ((this._x == _x)&&(this._y == _y))
-            return true;
-        else return false;
+
+    @Override
+    public boolean equals(Object obj) {
+        return (this == obj);
     }
 }
