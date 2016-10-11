@@ -49,6 +49,11 @@ public class Point {
 
     @Override
     public boolean equals(Object obj) {
-        return (this == obj);
+        Point point = (Point)obj;
+
+        if((this.x == point.getX())&&(this.y == point.getY()))
+            return true;
+        else
+            return false;
     }
 }
