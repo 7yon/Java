@@ -1,6 +1,8 @@
 <application>
   <component name="FileTypeManager" version="17">
     <extensionMap>
+      <mapping pattern="decoder" type="CLASS" />
+      <mapping pattern="Decoder" type="CLASS" />
       <mapping pattern="pom" type="XML" />
     </extensionMap>
   </component>
